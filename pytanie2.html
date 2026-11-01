@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>made by kuba masicz :)</title>
+    <style>
+        body {
+            background-color: #fff8dc;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            background-color: #deb887;
+            font-size: 30px;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .buttons {
+            margin-bottom: 25px;
+        }
+
+        button {
+            background-color: #dc143c;
+            color: white;
+            border: none;
+            padding: 15px 24px;
+            font-size: 16px;
+            margin: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:disabled {
+            background-color: #000000;
+            cursor: not-allowed;
+        }
+
+        #wynik {
+            font-size: 45px;
+            font-weight: bold;
+            margin-top: 20px;
+            min-height: 40px;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="tytul-pytania">Kto stanął na czele panstwa polskiego jako naczelnik w listopadzie 1918 roku?</h1>
+
+    <div class="buttons" id="kontener-przyciskow">
+        <button onclick="wybierz(false, 'Zła odpowiedź, był to Józef piłsudzki.')">Ignacy Jan Paderewski</button>
+        <button onclick="wybierz(true, 'listopada')">Józef Piłsudski</button>
+        <button onclick="wybierz(false, 'Zła odpowiedź, był to Józef Piłsudzki.')">Roman Dmowski</button>
+    </div>
+
+    <div id="wynik"></div>
+
+    <script>
+        var kluczZapisu = "odpowiedziano_stacja_1_pilsudski_v6";
+
+        window.onload = function() {
+            var zapisaneHaslo = localStorage.getItem(kluczZapisu);
+            if (zapisaneHaslo) {
+                document.getElementById('tytul-pytania').innerText = "Już wybrałeś/aś odpowiedź";
+                document.getElementById('kontener-przyciskow').style.display = 'none';
+                
+                if (zapisaneHaslo === 'HASLO_1') {
+                    document.getElementById('wynik').innerHTML = "Hasło nr.1:<br><span style='font-size: 65px;'>" + zapisaneHaslo + "</span>";
+                } else {
+                    document.getElementById('wynik').innerHTML = "<span style='font-size: 24px;'>" + zapisaneHaslo + "</span>";
+                }
+            }
+        };
+
+        function wybierz(czyPoprawna, komunikat) {
+            var wynikDiv = document.getElementById('wynik');
+            
+            if (czyPoprawna) {
+                wynikDiv.innerHTML = "Poprawna odpowiedź,<br> Hasło nr.1 to: <strong>" + komunikat + "</strong>";
+                localStorage.setItem(kluczZapisu, komunikat);
+            } else {
+                wynikDiv.style.fontSize = "24px";
+                wynikDiv.innerText = komunikat;
+                localStorage.setItem(kluczZapisu, komunikat);
+            }
+            
+            var przyciski = document.querySelectorAll('button');
+            for (var i = 0; i < przyciski.length; i++) {
+                przyciski[i].disabled = true;
+            }
+        }
+    </script>
+
+</body>
+</html>
