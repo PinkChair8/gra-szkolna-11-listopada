@@ -56,14 +56,14 @@
 
     <div class="buttons" id="kontener-przyciskow">
         <button onclick="wybierz(false, 'Zła odpowiedź, poprawna odpowiedź to listopad')">maj</button>
-        <button onclick="wybierz(true, '1918')">listopad</button>
+        <button onclick="wybierz(true, '&bdquo;pod&rdquo;')">listopad</button>
         <button onclick="wybierz(false, 'Zła odpowiedź, poprawna odpowiedź to listopad')">lipiec</button>
     </div>
 
     <div id="wynik"></div>
 
     <script>
-        var kluczZapisu = "odpowiedziano_stacja_3_v3";
+        var kluczZapisu = "odpowiedziano_stacja_3_v4";
 
         window.onload = function() {
             var zapisaneHaslo = localStorage.getItem(kluczZapisu);
@@ -71,8 +71,8 @@
                 document.getElementById('tytul-pytania').innerText = "Już wybrałeś/aś odpowiedź";
                 document.getElementById('kontener-przyciskow').style.display = 'none';
                 
-                if (zapisaneHaslo === '1918') {
-                    document.getElementById('wynik').innerHTML = "Hasło nr.3:<br><span style='font-size: 65px;'>" + zapisaneHaslo + "</span>";
+                if (zapisaneHaslo === '&bdquo;pod&rdquo;' || zapisaneHaslo === '„pod”') {
+                    document.getElementById('wynik').innerHTML = "Hasło nr. 3:<br><span style='font-size: 65px;'>" + zapisaneHaslo + "</span>";
                 } else {
                     document.getElementById('wynik').innerHTML = "<span style='font-size: 24px;'>" + zapisaneHaslo + "</span>";
                 }
@@ -83,7 +83,7 @@
             var wynikDiv = document.getElementById('wynik');
             
             if (czyPoprawna) {
-                wynikDiv.innerHTML = "Poprawna odpowiedź,<br> Hasło nr.3 to: <strong>" + komunikat + "</strong>";
+                wynikDiv.innerHTML = "Poprawna odpowiedź,<br> Hasło nr. 3 to: <strong>" + komunikat + "</strong>";
                 localStorage.setItem(kluczZapisu, komunikat);
             } else {
                 wynikDiv.style.fontSize = "24px";
