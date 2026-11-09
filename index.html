@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>made by kuba masicz :)</title>
+    <title>made by Kuba M + 1A </title>
     <style>
         body {
             background-color: #fff8dc;
@@ -56,14 +56,14 @@
 
     <div class="buttons" id="kontener-przyciskow">
         <button onclick="wybierz(false, 'Zła odpowiedź, wtedy jest Dzień Niepodległości')">święto zmarłych</button>
-        <button onclick="wybierz(true, '11')">Dzień niepodległości</button>
+        <button onclick="wybierz(true, '&bdquo;przybyli&rdquo;')">Dzień niepodległości</button>
         <button onclick="wybierz(false, 'Zła odpowiedź, wtedy jest Dzień Niepodległości')">rocznica uchwalenia konstytucji</button>
     </div>
 
     <div id="wynik"></div>
 
     <script>
-        var kluczZapisu = "odpowiedziano_11_listopada_v11";
+        var kluczZapisu = "odpowiedziano_11_listopada_v18";
 
         window.onload = function() {
             var zapisaneHaslo = localStorage.getItem(kluczZapisu);
@@ -71,8 +71,8 @@
                 document.getElementById('tytul-pytania').innerText = "Już wybrałeś/aś odpowiedź";
                 document.getElementById('kontener-przyciskow').style.display = 'none';
                 
-                if (zapisaneHaslo === '11') {
-                    document.getElementById('wynik').innerHTML = "Hasło nr.1:<br><span style='font-size: 65px;'>" + zapisaneHaslo + "</span>";
+                if (zapisaneHaslo === '&bdquo;przybyli&rdquo;' || zapisaneHaslo === '„przybyli”') {
+                    document.getElementById('wynik').innerHTML = "Hasło nr.1:<br><span style='font-size: 65px;'>&bdquo;przybyli&rdquo;</span>";
                 } else {
                     document.getElementById('wynik').innerHTML = "<span style='font-size: 24px;'>" + zapisaneHaslo + "</span>";
                 }
